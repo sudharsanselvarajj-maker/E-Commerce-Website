@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | FitGear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #cart {
+            overflow-x: auto;
+        }
+
+        #cart table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            white-space: nowrap;
+        }
+
+        #cart table img {
+            width: 70px;
+        }
+
+        #cart table td:nth-child(1) {
+            width: 250px;
+            text-align: center;
+        }
+
+        #cart table td:nth-child(2) {
+            width: 150px;
+            text-align: center;
+        }
+
+        #cart table td:nth-child(3) {
+            width: 250px;
+            text-align: center;
+        }
+
+        #cart table td {
+            padding: 10px 5px;
+        }
+
+        #cart table th {
+            padding: 10px 5px;
+            background: #1e1e1e;
+            color: #fff;
+            text-align: center;
+        }
+
+        .cart-info {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .cart-info div {
+            padding: 5px 20px;
+        }
+
+        .cart-info p {
+            font-weight: 600;
+        }
+
+        .cart-info a {
+            color: var(--accent-red);
+            font-size: 12px;
+        }
+
+        #cart-add {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #subtotal {
+            width: 50%;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            padding: 30px;
+        }
+
+        #subtotal table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #subtotal table td {
+            width: 50%;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Fit<span>Gear</span></a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="cart.html" class="nav-link active">Cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="cart" class="section-p1 container">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Product</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items injected here -->
+            </tbody>
+        </table>
+    </section>
+
+    <section id="cart-add" class="section-p1 container">
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td id="cart-subtotal">$0</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong id="cart-total">$0</strong></td>
+                </tr>
+            </table>
+            <button class="btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+            <button class="btn" style="background: #555; margin-left:10px;"
+                onclick="localStorage.removeItem('fitgear_cart'); location.reload();">Clear Cart</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>

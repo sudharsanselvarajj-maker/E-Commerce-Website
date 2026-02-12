@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | FitGear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .prodetails {
+            display: flex;
+            margin-top: 50px;
+        }
+
+        .single-pro-image {
+            width: 40%;
+            margin-right: 50px;
+        }
+
+        .single-pro-details {
+            width: 50%;
+            padding-top: 30px;
+        }
+
+        .single-pro-details h4 {
+            padding: 40px 0 20px 0;
+            font-size: 2rem;
+            font-family: var(--font-heading);
+        }
+
+        .single-pro-details h2 {
+            font-size: 26px;
+            color: var(--accent-red);
+        }
+
+        .single-pro-details select {
+            display: block;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            background: #1e1e1e;
+            color: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .single-pro-details input {
+            width: 50px;
+            height: 47px;
+            padding-left: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            background: #1e1e1e;
+            color: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .small-img-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .small-img-col {
+            flex-basis: 24%;
+            cursor: pointer;
+        }
+
+        @media(max-width: 477px) {
+            .prodetails {
+                flex-direction: column;
+            }
+
+            .single-pro-image {
+                width: 100%;
+                margin-right: 0px;
+            }
+
+            .single-pro-details {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Fit<span>Gear</span></a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                    <li><a href="cart.html" class="cart-icon"><i class="fas fa-shopping-bag"></i><span
+                                class="cart-count">0</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container prodetails section-p1">
+        <div class="single-pro-image">
+            <img src="" width="100%" id="main-img" alt="">
+        </div>
+        <div class="single-pro-details">
+            <h6 id="p-category">Home / T-Shirt</h6>
+            <h4 id="p-name">Men's Fashion T Shirt</h4>
+            <h2 id="p-price">$139.00</h2>
+            <select>
+                <option>Select Size</option>
+                <option>XL</option>
+                <option>XXL</option>
+                <option>Small</option>
+                <option>Large</option>
+            </select>
+            <input type="number" value="1">
+            <button class="btn" id="add-to-cart-btn">Add To Cart</button>
+            <h4 style="font-size: 1.5rem;">Product Details</h4>
+            <span id="p-desc">The Gildan Ultra Cotton T-shirt is made from a substantial 6.0 oz. per sq. yd. fabric
+                constructed from 100% cotton, this classic fit preshrunk jersey knit provides unmatched comfort with
+                each wear.</span>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProductDetails();
+        });
+    </script>
+</body>
+
+</html>

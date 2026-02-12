@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitGear | Premium Sports Equipment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Fit<span>Gear</span></a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="shop.html?category=men" class="nav-link">Men</a></li>
+                    <li><a href="shop.html?category=women" class="nav-link">Women</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <a href="login.html"><i class="fas fa-user"></i></a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h3>ELEVATE YOUR GAME</h3>
+                <h1>Train Like<br>A Pro</h1>
+                <p>Premium sports equipment for athletes who demand the best. Gear up with the latest collection.</p>
+                <a href="shop.html" class="btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section-p1">
+        <div class="container">
+            <div class="heading">
+                <h2>Browse <span>Categories</span></h2>
+                <p>Find the perfect gear for your sport</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card" onclick="location.href='shop.html?category=football'">
+                    <img src="https://placehold.co/400x400/1e1e1e/ff4757?text=Football" alt="Football">
+                    <div class="cat-overlay">
+                        <h3>Football</h3>
+                    </div>
+                </div>
+                <div class="category-card" onclick="location.href='shop.html?category=cricket'">
+                    <img src="https://placehold.co/400x400/1e1e1e/2ed573?text=Cricket" alt="Cricket">
+                    <div class="cat-overlay">
+                        <h3>Cricket</h3>
+                    </div>
+                </div>
+                <div class="category-card" onclick="location.href='shop.html?category=running'">
+                    <img src="https://placehold.co/400x400/1e1e1e/00a8ff?text=Running" alt="Running">
+                    <div class="cat-overlay">
+                        <h3>Running</h3>
+                    </div>
+                </div>
+                <div class="category-card" onclick="location.href='shop.html?category=gym'">
+                    <img src="https://placehold.co/400x400/1e1e1e/ffa502?text=Gym" alt="Gym">
+                    <div class="cat-overlay">
+                        <h3>Gym</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section-p1" style="background: #181818;">
+        <div class="container">
+            <div class="heading">
+                <h2>Featured <span>Products</span></h2>
+                <p>Top rated gear selected for you</p>
+            </div>
+            <!-- Dynamic Product Grid -->
+            <div class="product-grid" id="featured-products">
+                <!-- Products will be injected by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="section-p1"
+        style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x600/121212/2ed573?text=SUMMER+SALE'); background-size: cover; background-attachment: fixed; text-align: center;">
+        <div class="container">
+            <h2 style="font-family: 'Oswald'; font-size: 3rem; margin-bottom: 20px;">SUMMER SALE IS ON</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Get up to 50% off on all Running Shoes & Accessories</p>
+            <a href="shop.html" class="btn" style="background: var(--accent-blue);">Explore Sale</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">Fit<span>Gear</span></a>
+                    <p style="margin-top: 20px; color: #a0a0a0;">Premium sports equipment store for athletes. Quality
+                        gear, best prices, and fast delivery.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Equipment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul style="color: #a0a0a0;">
+                        <li><i class="fas fa-map-marker-alt" style="color: var(--accent-red); margin-right: 10px;"></i>
+                            123 Sports Ave, NY</li>
+                        <li><i class="fas fa-phone" style="color: var(--accent-red); margin-right: 10px;"></i> +1 234
+                            567 890</li>
+                        <li><i class="fas fa-envelope" style="color: var(--accent-red); margin-right: 10px;"></i>
+                            support@fitgear.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FitGear Sports. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simple script to init homepage
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render basic products
+            if (window.renderProducts) {
+                renderProducts('featured-products', 4); // Render 4 featured products
+            }
+            if (window.updateCartCount) {
+                updateCartCount();
+            }
+        });
+    </script>
+</body>
+
+</html>

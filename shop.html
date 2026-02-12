@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | FitGear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .shop-container {
+            display: flex;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .filter-sidebar {
+            flex: 1;
+            max-width: 250px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+
+        .filter-group {
+            margin-bottom: 25px;
+        }
+
+        .filter-group h3 {
+            margin-bottom: 15px;
+            font-family: var(--font-heading);
+            color: var(--accent-blue);
+        }
+
+        .filter-group ul li {
+            margin-bottom: 10px;
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .filter-group ul li:hover {
+            color: var(--accent-red);
+            padding-left: 5px;
+        }
+
+        .shop-main {
+            flex: 3;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header h2 {
+            font-family: var(--font-heading);
+        }
+
+        .search-bar {
+            background: #1e1e1e;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+        }
+
+        @media(max-width: 768px) {
+            .shop-container {
+                flex-direction: column;
+            }
+
+            .filter-sidebar {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (Same as Index) -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Fit<span>Gear</span></a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="shop.html" class="nav-link active">Shop</a></li>
+                    <li><a href="shop.html?category=men" class="nav-link">Men</a></li>
+                    <li><a href="shop.html?category=women" class="nav-link">Women</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <a href="login.html"><i class="fas fa-user"></i></a>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header Hero -->
+    <section
+        style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x400/121212/00a8ff?text=SHOP+ALL'); padding: 60px 0; text-align: center;">
+        <div class="container">
+            <h1 style="font-family: 'Oswald'; font-size: 3rem;">OUR COLLECTION</h1>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="container shop-container">
+        <!-- Sidebar -->
+        <div class="filter-sidebar">
+            <div class="filter-group">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Football</li>
+                    <li>Cricket</li>
+                    <li>Basketball</li>
+                    <li>Gym & Fitness</li>
+                    <li>Running</li>
+                    <li>Accessories</li>
+                </ul>
+            </div>
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <ul>
+                    <li>Under $50</li>
+                    <li>$50 - $100</li>
+                    <li>$100 - $200</li>
+                    <li>Over $200</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="shop-main">
+            <div class="page-header">
+                <h2>All Products</h2>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="product-grid" id="shop-products">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as Index) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">Fit<span>Gear</span></a>
+                    <p style="margin-top: 20px; color: #a0a0a0;">Premium sports equipment store for athletes.</p>
+                </div>
+                <!-- ... other footer cols ... -->
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FitGear Sports. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts('shop-products');
+        });
+    </script>
+</body>
+
+</html>
