@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Header Hero -->
+<section
+    style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x400/121212/00a8ff?text=SHOP+ALL'); padding: 60px 0; text-align: center;">
+    <div class="container">
+        <h1 style="font-family: 'Oswald'; font-size: 3rem;">OUR COLLECTION</h1>
+    </div>
+</section>
+
+<!-- Shop Content -->
+<section class="container shop-container">
+    <!-- Sidebar -->
+    <div class="filter-sidebar">
+        <div class="filter-group">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="{{ url_for('shop') }}">All</a></li>
+                <li><a href="{{ url_for('shop', category='football') }}">Football</a></li>
+                <li><a href="{{ url_for('shop', category='cricket') }}">Cricket</a></li>
+                <li><a href="{{ url_for('shop', category='running') }}">Running</a></li>
+                <li><a href="{{ url_for('shop', category='gym') }}">Gym & Fitness</a></li>
+            </ul>
+        </div>
+        <div class="filter-group">
+            <h3>Price Range</h3>
+            <ul>
+                <li>Under $50</li>
+                <li>$50 - $100</li>
+                <li>$100 - $200</li>
+                <li>Over $200</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="shop-main">
+        <div class="page-header">
+            <h2>{% if current_category %}{{ current_category|capitalize }}{% else %}All Products{% endif %}</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+        <div class="product-grid" id="shop-products">
+            {% for product in products %}
+            <div class="product-card">
+                <a href="{{ url_for('product_detail', product_id=product.id) }}"
+                    style="text-decoration:none; color:inherit; display:block;">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+                    <div class="product-info">
+                        <h3>{{ product.name }}</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                </a>
+                <div class="price-row">
+                    <span class="price">${{ product.price }}</span>
+                    <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST"
+                        style="display:inline;" onclick="event.stopPropagation()">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="add-btn" style="border:none; cursor:pointer;"><i
+                                class="fas fa-shopping-cart"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+</section>
+{% endblock %}

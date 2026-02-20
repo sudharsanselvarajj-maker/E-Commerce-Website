@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h3>ELEVATE YOUR GAME</h3>
+            <h1>Train Like<br>A Pro</h1>
+            <p>Premium sports equipment for athletes who demand the best. Gear up with the latest collection.</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section-p1">
+    <div class="container">
+        <div class="heading">
+            <h2>Browse <span>Categories</span></h2>
+            <p>Find the perfect gear for your sport</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card" onclick="location.href='#'">
+                <img src="https://placehold.co/400x400/1e1e1e/ff4757?text=Football" alt="Football">
+                <div class="cat-overlay">
+                    <h3>Football</h3>
+                </div>
+            </div>
+            <div class="category-card" onclick="location.href='#'">
+                <img src="https://placehold.co/400x400/1e1e1e/2ed573?text=Cricket" alt="Cricket">
+                <div class="cat-overlay">
+                    <h3>Cricket</h3>
+                </div>
+            </div>
+            <div class="category-card" onclick="location.href='#'">
+                <img src="https://placehold.co/400x400/1e1e1e/00a8ff?text=Running" alt="Running">
+                <div class="cat-overlay">
+                    <h3>Running</h3>
+                </div>
+            </div>
+            <div class="category-card" onclick="location.href='#'">
+                <img src="https://placehold.co/400x400/1e1e1e/ffa502?text=Gym" alt="Gym">
+                <div class="cat-overlay">
+                    <h3>Gym</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section-p1" style="background: #181818;">
+    <div class="container">
+        <div class="heading">
+            <h2>Featured <span>Products</span></h2>
+            <p>Top rated gear selected for you</p>
+        </div>
+        <!-- Dynamic Product Grid -->
+        <div class="product-grid" id="featured-products">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-img">
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">${{ product.price }}</span>
+                        <a href="#" class="add-btn"><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Promo Banner -->
+<section class="section-p1"
+    style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x600/121212/2ed573?text=SUMMER+SALE'); background-size: cover; background-attachment: fixed; text-align: center;">
+    <div class="container">
+        <h2 style="font-family: 'Oswald'; font-size: 3rem; margin-bottom: 20px;">SUMMER SALE IS ON</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">Get up to 50% off on all Running Shoes & Accessories</p>
+        <a href="#" class="btn" style="background: var(--accent-blue);">Explore Sale</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="cart" class="section-p1 container">
+    <table width="100%">
+        <thead>
+            <tr>
+                <td>Product</td>
+                <td>Quantity</td>
+                <td>Subtotal</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                        <div>
+                            <p>{{ item.product.name }}</p>
+                            <small>Price: ${{ item.product.price }}</small>
+                            <br>
+                            <form action="{{ url_for('remove_from_cart', item_id=item.id) }}" method="POST"
+                                style="display:inline;">
+                                <button type="submit"
+                                    style="background:none; border:none; color:var(--accent-red); cursor:pointer; padding:0;">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="{{ item.quantity }}" readonly></td>
+                <td>${{ item.product.price * item.quantity }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align:center; padding: 20px;">Your cart is empty. <a
+                        href="{{ url_for('shop') }}" style="color:var(--accent-red);">Go Shopping</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+{% if cart_items %}
+<section id="cart-add" class="section-p1 container">
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>${{ subtotal }}</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>${{ subtotal }}</strong></td>
+            </tr>
+        </table>
+        <button class="btn" onclick="window.location.href='#'">Proceed to Checkout</button>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitGear | Premium Sports Equipment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="{{ url_for('home') }}" class="logo">Fit<span>Gear</span></a>
+
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('home') }}" class="nav-link active">Home</a></li>
+                    <li><a href="{{ url_for('shop') }}" class="nav-link">Shop</a></li>
+                    {% if current_user.is_authenticated %}
+                    {% if current_user.is_admin %}
+                    <li><a href="{{ url_for('admin_dashboard') }}" class="nav-link"
+                            style="color: var(--accent-red);">Admin</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}" class="nav-link">Login</a></li>
+                    {% endif %}
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    {% if current_user.is_authenticated %}
+                    <a href="#"><i class="fas fa-user"></i> {{ current_user.username }}</a>
+                    {% else %}
+                    <a href="{{ url_for('login') }}"><i class="fas fa-user"></i></a>
+                    {% endif %}
+                    <a href="{{ url_for('cart') }}" class="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="container" style="margin-top: 20px;">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}"
+            style="padding: 10px; background: #333; color: #fff; margin-bottom: 10px; border-radius: 5px;">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="{{ url_for('home') }}" class="logo">Fit<span>Gear</span></a>
+                    <p style="margin-top: 20px; color: #a0a0a0;">Premium sports equipment store for athletes. Quality
+                        gear, best prices, and fast delivery.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Equipment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul style="color: #a0a0a0;">
+                        <li><i class="fas fa-map-marker-alt" style="color: var(--accent-red); margin-right: 10px;"></i>
+                            123 Sports Ave, NY</li>
+                        <li><i class="fas fa-phone" style="color: var(--accent-red); margin-right: 10px;"></i> +1 234
+                            567 890</li>
+                        <li><i class="fas fa-envelope" style="color: var(--accent-red); margin-right: 10px;"></i>
+                            support@fitgear.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FitGear Sports. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+
+</html>

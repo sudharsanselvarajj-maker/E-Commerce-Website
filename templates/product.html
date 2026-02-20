@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container prodetails section-p1">
+    <div class="single-pro-image">
+        <img src="{{ product.image_url }}" width="100%" id="main-img" alt="{{ product.name }}">
+    </div>
+    <div class="single-pro-details">
+        <h6>Home / {{ product.category|capitalize }}</h6>
+        <h4>{{ product.name }}</h4>
+        <h2>${{ product.price }}</h2>
+        <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST">
+            <select name="size">
+                <option>Select Size</option>
+                <option>XL</option>
+                <option>XXL</option>
+                <option>Small</option>
+                <option>Large</option>
+            </select>
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="submit" class="btn">Add To Cart</button>
+        </form>
+        <h4 style="font-size: 1.5rem; margin-top: 20px;">Product Details</h4>
+        <span>{{ product.description }}</span>
+    </div>
+</section>
+{% endblock %}

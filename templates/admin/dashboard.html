@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container section-p1">
+    <div class="heading">
+        <h2>Admin <span>Dashboard</span></h2>
+        <p>Manage your store</p>
+    </div>
+
+    <!-- Products Section -->
+    <h3 style="margin-bottom: 20px; color: var(--accent-blue);">Products</h3>
+    <div style="margin-bottom: 20px; text-align: right;">
+        <a href="{{ url_for('add_product') }}" class="btn">Add New Product</a>
+    </div>
+
+    <div style="overflow-x: auto; margin-bottom: 50px;">
+        <table style="width: 100%; border-collapse: collapse; color: #fff;">
+            <thead>
+                <tr style="background: #1e1e1e; text-align: left;">
+                    <th style="padding: 15px;">ID</th>
+                    <th style="padding: 15px;">Image</th>
+                    <th style="padding: 15px;">Name</th>
+                    <th style="padding: 15px;">Price</th>
+                    <th style="padding: 15px;">Stock</th>
+                    <th style="padding: 15px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 15px;">{{ product.id }}</td>
+                    <td style="padding: 15px;"><img src="{{ product.image_url }}"
+                            style="width: 50px; height: 50px; object-fit: cover;"></td>
+                    <td style="padding: 15px;">{{ product.name }}</td>
+                    <td style="padding: 15px;">${{ product.price }}</td>
+                    <td style="padding: 15px;">{{ product.stock }}</td>
+                    <td style="padding: 15px;">
+                        <a href="{{ url_for('edit_product', product_id=product.id) }}"
+                            style="color: var(--accent-blue); margin-right: 10px;"><i class="fas fa-edit"></i></a>
+                        <form action="{{ url_for('delete_product', product_id=product.id) }}" method="POST"
+                            style="display:inline;"
+                            onsubmit="return confirm('Are you sure you want to delete this product?');">
+                            <button type="submit"
+                                style="background:none; border:none; color: var(--accent-red); cursor:pointer;"><i
+                                    class="fas fa-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Orders Section -->
+    <h3 style="margin-bottom: 20px; color: var(--accent-blue);">Orders</h3>
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; color: #fff;">
+            <thead>
+                <tr style="background: #1e1e1e; text-align: left;">
+                    <th style="padding: 15px;">Order ID</th>
+                    <th style="padding: 15px;">User ID</th>
+                    <th style="padding: 15px;">Total Amount</th>
+                    <th style="padding: 15px;">Status</th>
+                    <th style="padding: 15px;">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 15px;">#{{ order.id }}</td>
+                    <td style="padding: 15px;">{{ order.user_id }}</td>
+                    <td style="padding: 15px;">${{ order.total_amount }}</td>
+                    <td style="padding: 15px;">
+                        <span
+                            style="background: {% if order.status == 'Completed' %}var(--accent-blue){% else %}#fc5c65{% endif %}; padding: 5px 10px; border-radius: 5px; color: #000; font-weight: bold; font-size: 0.8rem;">
+                            {{ order.status }}
+                        </span>
+                    </td>
+                    <td style="padding: 15px;">{{ order.created_at.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
